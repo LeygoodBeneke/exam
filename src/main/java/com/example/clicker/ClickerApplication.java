@@ -18,6 +18,7 @@ public class ClickerApplication {
 	@GetMapping("/hello")
 	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
 		counter++;
+		System.out.println("HELLO!!!");
 		return String.format("Hello %s! Counter: %d", name, counter);
 	}
 

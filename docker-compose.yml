@@ -1,6 +1,20 @@
 version: "3.7"
 services:
-  api_service:
+  client-frontend:
+    image: frontend:0.0.1
+    build: ./frontend
+    restart: always
+    ports:
+      - '3000:3000'
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+    networks:
+      - app-test
+    depends_on:
+      - api-service
+  api-service:
+    container_name: api-service
     build:
       context: .
       args:
@@ -12,6 +26,8 @@ services:
       - postgresql_db
     links:
       - postgresql_db:postgresql_db
+    networks:
+      - app-test
   postgresql_db:
     image: "postgres:15-alpine3.17"
     restart: always
@@ -21,3 +37,8 @@ services:
       POSTGRES_DB: java_to_dev_app_db
       POSTGRES_USER: java_to_dev
       POSTGRES_PASSWORD: nE5kMc7JCGNqwDQM
+    networks:
+      - app-test
+networks:
+  app-test:
+    driver: bridge

@@ -26,7 +26,10 @@ public class ClickerApplication {
 	@GetMapping("/hello")
 	public Item hello(@RequestParam(value = "name", defaultValue = "World") String name) {
 		counter++;
-		Item item = new Item(counter, "item" + counter, "description of item" + counter);
+		Item item = Item.builder()
+				.name("Item" + counter)
+				.description("description of item" + counter)
+				.build();
 
 		itemRepository.save(item);
 		System.out.println("HELLO!!!");

@@ -4,7 +4,7 @@
 
 ### Backend
 ```bash
- mvn clean package -Dmaven.test.skip
+ mvn clean package
  docker build --build-arg JAR_FILE=target/*.jar -t myorg/myapp .
  docker run -p 8090:8070 myorg/myapp
 ```
@@ -18,7 +18,7 @@ to be continued ...
 ## Run with docker-compose
 
 ```bash
- mvn clean package -Dmaven.test.skip
+ mvn clean package
  sudo docker-compose build
  sudo docker-compose up
 ```

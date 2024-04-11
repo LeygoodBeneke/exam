@@ -1,11 +1,6 @@
 package com.example.clicker.Controllers;
 
-import com.example.clicker.DAO.ItemDAO;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import com.example.clicker.Model.Item;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,11 +12,11 @@ import java.util.List;
 @RequestMapping("bye")
 public class IndexController {
     @GetMapping
-    public List<ItemDAO> bye() {
-        ItemDAO itemDAO = new ItemDAO(23L, "item" + 1, "description of item" + 1);
-        List<ItemDAO> itemDAOList = new ArrayList<>();
-        itemDAOList.add(itemDAO);
+    public List<Item> bye() {
+        Item item = new Item(23L, "item" + 1, "description of item" + 1);
+        List<Item> itemList = new ArrayList<>();
+        itemList.add(item);
         System.out.println("HELLO!!!");
-        return itemDAOList;
+        return itemList;
     }
 }

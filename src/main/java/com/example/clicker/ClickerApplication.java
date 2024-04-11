@@ -1,6 +1,6 @@
 package com.example.clicker;
 
-import com.example.clicker.DAO.ItemDAO;
+import com.example.clicker.Model.Item;
 import com.example.clicker.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @SpringBootApplication
 @RestController
@@ -22,12 +24,18 @@ public class ClickerApplication {
 	}
 
 	@GetMapping("/hello")
-	public ItemDAO hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+	public Item hello(@RequestParam(value = "name", defaultValue = "World") String name) {
 		counter++;
-		ItemDAO itemDAO = new ItemDAO(counter, "item" + counter, "description of item" + counter);
+		Item item = new Item(counter, "item" + counter, "description of item" + counter);
 
-		itemRepository.save(itemDAO);
+		itemRepository.save(item);
 		System.out.println("HELLO!!!");
-		return itemDAO;
+		return item;
+	}
+
+	@GetMapping("/items")
+	public List<Item> items() {
+		System.out.println(itemRepository.findAll());
+		return itemRepository.findAll();
 	}
 }

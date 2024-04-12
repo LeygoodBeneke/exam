@@ -38,7 +38,7 @@ to be continued ...
 | GET     | `/items`                  | List of Market items                           |
 | GET     | `/items/{item_id}`        | Item with `id` information                     |
 | POST    | `/items/{item_id}/delete` | Delete item with `id` (Admin account required) |
-| POST    | `/items/{item_id}/create` | Create item with `id` (Admin account required) |
+| POST    | `/items/create`           | Create item (Admin account required)           |
 |         | `/register`               | User registration                              |
 |         | `/login`                  | User authorization                             |
 | GET     | `/account/{username}`     | Account information                            |

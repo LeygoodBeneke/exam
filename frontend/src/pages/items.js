@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import "./items.css"
 
 function Items() {
 
@@ -11,13 +12,17 @@ function Items() {
     }, []);
 
     return (
-        <div className="Items">
-            {
-                items.map((item) => {
-                    return <div>{item.id} {item.name} {item.description}</div>
-                })
-            }
-        </div>
+            <div className="Items">
+                {
+                    items.map((item) => {
+                        return <div className="Item">
+                            <div> {item.id} </div>
+                            <div> {item.name} </div>
+                            <div> {item.description} </div>
+                        </div>
+                    })
+                }
+            </div>
     );
 }
 

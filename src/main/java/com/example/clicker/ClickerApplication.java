@@ -36,9 +36,5 @@ public class ClickerApplication {
 		return item;
 	}
 
-	@GetMapping("/items")
-	public List<Item> items() {
-		System.out.println(itemRepository.findAll());
-		return itemRepository.findAll();
-	}
+
 }

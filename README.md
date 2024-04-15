@@ -25,9 +25,16 @@ to be continued ...
 
 ## Run local
 
+- Change string in frontend/src/package.json
+```json
+ "proxy": "http://localhost:8080",
+```
+
+- Run in root folder of project
 ```bash
- mvn package 
- java -jar target/*.jar
+ mvn spring-boot:run -Dspring-boot.run.profiles=test
+ cd frontend
+ npm start
 ```
 
 ## Endpoints API

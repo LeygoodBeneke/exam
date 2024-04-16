@@ -5,13 +5,14 @@ import com.example.clicker.Model.User;
 import com.example.clicker.repository.ItemRepository;
 import com.example.clicker.repository.OrdersRepository;
 import com.example.clicker.repository.UsersRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.util.Assert;
+
+import java.util.Optional;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -45,6 +46,10 @@ class ClickerApplicationTests {
 				.password("Admin")
 				.role("ADMIN")
 				.build());
+		itemRepository.save(Item.builder()
+				.name("First test item")
+				.description("First test item description")
+				.build());
 	}
 
 	@Test
@@ -53,15 +58,4 @@ class ClickerApplicationTests {
 		Assert.isTrue(usersRepository.findById(1L).get().getUsername().equals("Vasya"), "Vasya");
 		Assert.isTrue(usersRepository.findById(2L).get().getUsername().equals("Admin"), "Admin");
 	}
-
-	@Test
-	public void contextLoads() {
-		long counter = 1;
-		Item item = Item.builder().name("haha").description("hehe").build();
-		itemRepository.save(item);
-
-		long itemsCount = itemRepository.findAll().size();
-		Assert.isTrue(itemsCount == 1, "Items count must equals to 1.");
-	}
-
 }

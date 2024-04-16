@@ -2,6 +2,7 @@ package com.example.clicker;
 
 import com.example.clicker.Model.Item;
 import com.example.clicker.repository.ItemRepository;
+import com.example.clicker.repository.OrdersRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,11 +15,13 @@ class ClickerApplicationTests {
 
 	@Autowired
 	ItemRepository itemRepository;
+	@Autowired
+	OrdersRepository ordersRepository;
 
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 		long counter = 1;
-		Item item = new Item(counter, "item" + counter, "description of item" + counter);
+		Item item = Item.builder().name("haha").description("hehe").build();
 		itemRepository.save(item);
 
 		long itemsCount = itemRepository.findAll().size();

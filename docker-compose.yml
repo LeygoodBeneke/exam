@@ -1,4 +1,3 @@
-version: "3.7"
 services:
   client-frontend:
     image: frontend:0.0.1

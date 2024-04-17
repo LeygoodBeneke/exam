@@ -62,7 +62,13 @@ to be continued ...
 ## To do
 - [x] Connect Database (Postgres)
 - [ ] Login 
+  - [ ] user registration (with google?)
+  - [ ] admin role
 - [ ] Html forms
 - [ ] CSS
 - [ ] Add Logic to Database
+  - [x] Item price update
+  - [ ] order creation
+  - [ ] user order history
+  - [ ] user money
 - [x] Docker

@@ -9,7 +9,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.util.Assert;
 
 import java.util.Optional;
@@ -17,22 +19,12 @@ import java.util.Optional;
 @SpringBootTest
 @ActiveProfiles("test")
 class ClickerApplicationTests {
-
 	@Autowired
-	ItemRepository itemRepository;
+    UsersRepository usersRepository;
 	@Autowired
 	OrdersRepository ordersRepository;
 	@Autowired
-    UsersRepository usersRepository;
-
-	@Autowired
-	ClickerApplicationTests(UsersRepository usersRepository,
-							OrdersRepository ordersRepository,
-							ItemRepository itemRepository) {
-		this.usersRepository = usersRepository;
-		this.ordersRepository = ordersRepository;
-		this.itemRepository = itemRepository;
-	}
+	ItemRepository itemRepository;
 
 	@BeforeEach
 	public void setData() {

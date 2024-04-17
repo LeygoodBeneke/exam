@@ -18,5 +18,4 @@ public class Prices {
     private Long id;
     private Long itemId;
     private Long price;
-    private Timestamp createdAt;
 }

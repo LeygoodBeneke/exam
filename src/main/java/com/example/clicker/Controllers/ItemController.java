@@ -1,7 +1,9 @@
 package com.example.clicker.Controllers;
 
 import com.example.clicker.Model.Item;
+import com.example.clicker.Model.Prices;
 import com.example.clicker.repository.ItemRepository;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,9 +35,29 @@ public class ItemController {
     }
 
     @PostMapping("create")
-    public void createItem(@RequestBody Item item) {
-        long simpleId = itemRepository.findAll().size();
-        item.setId(simpleId);
-        itemRepository.save(item);
+    public void createItem(@RequestBody ObjectNode json) {
+        String name = json.get("name").asText();
+        String description = json.get("description").asText();
+
+        Item newItem = Item.builder()
+                .name(name)
+                .description(description)
+                .build();
+        itemRepository.save(newItem);
+    }
+
+    @PostMapping("updatePrice")
+    public void updatePrice(@RequestBody ObjectNode json) {
+        Long itemId = json.get("itemId").asLong();
+        Long newPrice = json.get("newPrice").asLong();
+        Optional<Item> itemOptional = itemRepository.findById(itemId);
+
+        if (itemOptional.isPresent()) {
+            itemOptional.get().getPrices().add(Prices.builder()
+                    .itemId(itemId)
+                    .price(newPrice)
+                    .build());
+            itemRepository.save(itemOptional.get());
+        }
     }
 }

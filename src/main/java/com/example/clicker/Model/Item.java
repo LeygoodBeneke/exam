@@ -3,6 +3,8 @@ package com.example.clicker.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Builder
 @Getter
 @Setter
@@ -20,6 +22,10 @@ public class Item {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "item_id_price")
+    private List<Prices> prices;
 
     private boolean isArchived;
 }

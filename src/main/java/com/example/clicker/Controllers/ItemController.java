@@ -6,6 +6,10 @@ import com.example.clicker.repository.ItemRepository;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,5 +63,14 @@ public class ItemController {
                     .build());
             itemRepository.save(itemOptional.get());
         }
+    }
+
+    @GetMapping("image")
+    public byte[] imageTest() throws IOException {
+
+        Path signaturesFilePath = Path.of("test.jpeg");
+
+        InputStream inputStream = Files.newInputStream(signaturesFilePath);
+        return inputStream.readAllBytes();
     }
 }

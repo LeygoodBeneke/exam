@@ -27,5 +27,9 @@ public class Item {
     @JoinColumn(name = "item_id_price")
     private List<Prices> prices;
 
+    @Lob
+    @Column
+    private byte[] imageData;
+
     private boolean isArchived;
 }

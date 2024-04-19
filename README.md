@@ -61,14 +61,16 @@ to be continued ...
 
 ## To do
 - [x] Connect Database (Postgres)
-- [ ] Login 
-  - [ ] user registration (with google?)
-  - [ ] admin role
+- [ ] Login
+    - [x] JWT token support
+    - [ ] userEntity registration (with google?)
+    - [ ] admin role
 - [ ] Html forms
 - [ ] CSS
 - [ ] Add Logic to Database
   - [x] Item price update
+  - [x] Users registration
   - [ ] order creation
-  - [ ] user order history
-  - [ ] user money
+  - [ ] userEntity order history
+  - [ ] userEntity money
 - [x] Docker

@@ -1,0 +1,70 @@
+.App {
+
+}
+
+.Wrapper {
+  max-width: 1200px;
+  margin: auto;
+}
+.Items {
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  max-width: 1200px;
+  gap: 15px;
+  margin: auto;
+  justify-items: center;
+}
+
+.Item {
+  background: rgb(255, 255, 255);
+  transition: .2s;
+  min-width: 150px;
+  max-width: 350px;
+  width: 100%;
+  box-shadow: 0 0 5px 5px rgba(238, 238, 238, 0.2);
+  height: 330px;
+}
+
+.Item:hover {
+  /*background: #f3f3f3;*/
+  /*border-radius: 10px;*/
+  box-shadow: 0 0 10px 10px rgba(176, 176, 176, 0.2);
+}
+.Item .Button {
+  background: rgba(190, 202, 215, 0.13);
+  color: black;
+  margin: 10px auto;
+  padding: 5px;
+  text-align: center;
+  width: 90%;
+  transition: .2s;
+}
+
+.Item .Button:hover {
+  background: rgb(236, 205, 65);
+}
+
+.Item .Card {
+  width: 90%;
+  height: 50%;
+  background: #e2eae7;
+  margin: 10px auto;
+}
+
+.Header .logo {
+  font-weight: 600;
+  font-size: 26px;
+  padding: 20px;
+}
+
+.Header ul.nav {
+  float: right;
+  list-style: none;
+  cursor: pointer;
+}
+.Header ul.nav li {
+  display: inline;
+  margin-left: 25px;
+  padding: 20px;
+}

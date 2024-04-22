@@ -1,46 +1,54 @@
-import { useEffect, useState } from "react";
+import {Component, useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 import Item from "../Components/Item";
 import Header from "../Components/Header";
 
-function Items() {
+class Items extends Component{
 
-    const [items, setItems] = useState([]);
+    // const [items, setItems] = useState([]);
+    //
+    // useEffect(() => {
+    //     fetch('/items')
+    //         .then(response => response.json())
+    //         .then(data => setItems(data))
+    // }, []);
 
-    useEffect(() => {
-        fetch('/items')
-            .then(response => response.json())
-            .then(data => setItems(data))
-    }, []);
-
-    let navigate = useNavigate();
-    const itemInfo = (itemId) =>{
-        let path = `/items/` + itemId;
-        navigate(path);
+    constructor(props) {
+        super(props);
+        this.state = {
+            items: []
+        }
     }
 
-    const toBasket = (itemId) => {
-
+    componentDidMount() {
+        this.fetchData();
     }
 
-    return (
-        <div className="Items">
-            <Item />
-            {
-                items.map((item) => {
-                    return <div className="Item">
-                        <div className="Card"></div>
-                        <div> {item.name} </div>
-                        {/*<i> {item.description} </i>*/}
-                        <b> 123123 </b>
-                        <div className="Button" onClick={() => itemInfo(item.id)}>подробнее</div>
-                        <div className="Button" onClick={() => toBasket(item.id)}>В корзину</div>
-                    </div>
-                })
-            }
-        </div>
-    );
+    fetchData = async () => {
+        try {
+            const response = await fetch('/items');
+            const jsonData = await response.json();
+            this.setState({ items: jsonData });
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    // const toBasket = (itemId) => {
+    //
+    // }
+    render() {
+        return (
+            <div className="Items">
+                {
+                    this.state.items.map((it) => {
+                        return <Item key={it.id} item={it} onAdd={this.props.onAdd} />
+                    })
+                }
+            </div>
+        );
+    }
 }
 
 export default Items;

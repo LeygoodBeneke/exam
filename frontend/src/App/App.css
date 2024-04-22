@@ -51,20 +51,86 @@
   background: #e2eae7;
   margin: 10px auto;
 }
-
+.Header {
+  height: 100px;
+  justify-content: center;
+}
 .Header .logo {
   font-weight: 600;
   font-size: 26px;
-  padding: 20px;
+  float: left;
+  padding: 35px;
+}
+
+.Header {
+  position: relative;
+}
+
+.Header ul {
+  height: 100%;
 }
 
 .Header ul.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   float: right;
   list-style: none;
   cursor: pointer;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100%;
 }
 .Header ul.nav li {
   display: inline;
-  margin-left: 25px;
   padding: 20px;
+}
+.Header .basket {
+  float: right;
+  height: 100%;
+  transition: .2s;
+}
+.Header .basket:hover,
+.Header .active {
+  color: crimson;
+}
+
+.Header .shop-cart {
+  position: absolute;
+  top:70px;
+  width: 450px;
+  min-height: 100px;
+  right: 0;
+  box-shadow: 0 0 5px 5px rgba(238, 238, 238, 0.2);
+  background: white;
+  transition: .2s;
+}
+
+.Order {
+  display: flex;
+  white-space: nowrap;
+  margin: 10px 10px;
+  justify-content: left;
+}
+
+.Header .shop-cart:hover {
+  /*background: #f3f3f3;*/
+  /*border-radius: 10px;*/
+  box-shadow: 0 0 10px 10px rgba(176, 176, 176, 0.2);
+}
+
+.Order .Card {
+  margin: auto auto;
+  background: #997ce1;
+}
+
+.Order span {
+  display: inline;
+  padding: 20px;
+  height: 100%;
+}
+
+.Order .Count {
+  height: 100%;
+  margin: auto auto;
 }

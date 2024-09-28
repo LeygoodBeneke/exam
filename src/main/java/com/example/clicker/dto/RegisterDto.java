@@ -1,9 +1,9 @@
-package com.example.clicker.DTO;
+package com.example.clicker.dto;
 
 import lombok.Data;
 
 @Data
-public class LoginDTO {
+public class RegisterDto {
     private String username;
     private String password;
 }

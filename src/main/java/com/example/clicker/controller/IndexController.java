@@ -1,4 +1,4 @@
-package com.example.clicker.Controllers;
+package com.example.clicker.controller;
 
 import com.example.clicker.Model.Item;
 import com.example.clicker.repository.ItemRepository;

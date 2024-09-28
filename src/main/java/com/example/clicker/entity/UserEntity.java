@@ -1,4 +1,4 @@
-package com.example.clicker.Model;
+package com.example.clicker.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

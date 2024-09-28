@@ -1,13 +1,13 @@
-package com.example.clicker.DTO;
+package com.example.clicker.dto;
 
 import lombok.Data;
 
 @Data
-public class AuthResponseDTO {
+public class AuthResponseDto {
     private String token;
     private String tokenType = "Bearer ";
 
-    public AuthResponseDTO(String token) {
+    public AuthResponseDto(String token) {
         this.token = token;
     }
 }

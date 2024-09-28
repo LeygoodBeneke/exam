@@ -1,4 +1,5 @@
 import './App.css';
+import './Place.css';
 import Items from "../pages/items";
 import Header from "../Components/Header";
 import {Component} from "react";

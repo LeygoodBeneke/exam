@@ -1,15 +1,14 @@
 package com.example.clicker;
 
 import com.example.clicker.Model.Item;
-import com.example.clicker.Model.UserEntity;
+import com.example.clicker.entity.UserEntity;
 import com.example.clicker.repository.ItemRepository;
 import com.example.clicker.repository.OrdersRepository;
-import com.example.clicker.repository.UsersRepository;
+import com.example.clicker.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.util.Assert;
 
@@ -18,7 +17,7 @@ import org.springframework.util.Assert;
 @ActiveProfiles("test")
 class ClickerApplicationTests {
 	@Autowired
-    UsersRepository usersRepository;
+    UserRepository userRepository;
 	@Autowired
 	OrdersRepository ordersRepository;
 	@Autowired
@@ -26,11 +25,11 @@ class ClickerApplicationTests {
 
 	@BeforeEach
 	public void setData() {
-		usersRepository.save(UserEntity.builder()
+		userRepository.save(UserEntity.builder()
 				.username("Vasya")
 				.password("String")
 				.build());
-		usersRepository.save(UserEntity.builder()
+		userRepository.save(UserEntity.builder()
 				.username("Admin")
 				.password("Admin")
 				.build());
@@ -42,8 +41,8 @@ class ClickerApplicationTests {
 
 	@Test
 	public void testUserData() {
-		Assert.isTrue(usersRepository.findAll().size() == 2, "2 users: Admin and Vasya");
-		Assert.isTrue(usersRepository.findById(1L).get().getUsername().equals("Vasya"), "Vasya");
-		Assert.isTrue(usersRepository.findById(2L).get().getUsername().equals("Admin"), "Admin");
+		Assert.isTrue(userRepository.findAll().size() == 2, "2 users: Admin and Vasya");
+		Assert.isTrue(userRepository.findById(1L).get().getUsername().equals("Vasya"), "Vasya");
+		Assert.isTrue(userRepository.findById(2L).get().getUsername().equals("Admin"), "Admin");
 	}
 }

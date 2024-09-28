@@ -1,11 +1,7 @@
 import { Component } from "react";
-import {useNavigate} from "react-router-dom";
 
 class Item extends Component{
 
-    constructor(props) {
-        super(props);
-    }
     render() {
         return <div className="Item">
             <div className="Card"></div>

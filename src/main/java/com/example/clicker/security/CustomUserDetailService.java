@@ -1,8 +1,8 @@
 package com.example.clicker.security;
 
-import com.example.clicker.Model.Role;
-import com.example.clicker.Model.UserEntity;
-import com.example.clicker.repository.UsersRepository;
+import com.example.clicker.entity.Role;
+import com.example.clicker.entity.UserEntity;
+import com.example.clicker.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,16 +19,16 @@ import java.util.stream.Collectors;
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 
-    private UsersRepository usersRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public CustomUserDetailService(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
+    public CustomUserDetailService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity userEntity = usersRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
+        UserEntity userEntity = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
         return new User(userEntity.getUsername(), userEntity.getPassword(), getAuthorities(userEntity.getRoles()));
     }
 

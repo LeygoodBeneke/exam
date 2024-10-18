@@ -28,7 +28,9 @@ function Login() {
 
         if (data.hasOwnProperty('token')) {
             localStorage.setItem("user", data.tokenType + data.token);
-            navigate('/test');
+            localStorage.setItem("username", login);
+            localStorage.setItem("password", password);
+            navigate('/nav');
         } else {
             document.querySelector('.test').style.visibility = 'visible';
         }

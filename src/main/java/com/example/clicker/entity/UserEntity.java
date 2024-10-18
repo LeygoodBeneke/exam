@@ -26,6 +26,15 @@ public class UserEntity {
     )
     private List<Role> roles = new ArrayList<>();
 
+
+
+    @OneToMany
+    @JoinTable(
+            name = "use",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "thing_id"))
+    private List<ThingEntity> thingEntities;
+
     public UserEntity(String username, String password, List<Role> roles) {
         this.username = username;
         this.password = password;

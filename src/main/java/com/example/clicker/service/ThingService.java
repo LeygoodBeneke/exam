@@ -56,7 +56,9 @@ public class ThingService {
 
     public List<ThingDto> getThingList() {
         var user = getUserAuthEntity();
-        return thingRepository.findAllByUser(user).stream().map(thingMapper::toDto).toList();
+        var userEntity = userRepository.findById(user.getId()).get();
+        return userEntity.getThingEntities().stream().map(thingMapper::toDto).toList();
+//        return thingRepository.findAllByUser(user).stream().map(thingMapper::toDto).toList();
     }
 
     public ThingDto deleteThing(UUID id) {

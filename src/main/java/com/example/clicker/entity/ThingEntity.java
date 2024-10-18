@@ -28,6 +28,5 @@ public class ThingEntity {
     private LocalDateTime warranty;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
     private UserEntity user;
 }

@@ -2,6 +2,7 @@ import {Component} from "react";
 
 // import Item from "../Components/Item";
 import Place from "../Components/Place";
+import Header from "../function/Header";
 // import items from "./items";
 // import Login from "../Components/Login";
 // import {Navigate} from "react-router-dom";
@@ -73,11 +74,12 @@ class Places extends Component{
     // const toBasket = (itemId) => {
     //
     // }
+
     render() {
         return (
             <div>
+                <Header />
                 <div className="Places">
-                    <button className="LoginForm">asdaads</button>
                     {
                             this.state.items.map((it) => {
                                 return <Place key={it.id} place={it} onAdd={this.props.onAdd} />

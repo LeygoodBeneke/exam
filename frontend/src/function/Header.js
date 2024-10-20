@@ -34,12 +34,9 @@ function Header() {
 
         const fetchData = async () => {
             try {
-                const response = await fetch("/user", requestOptions)
+                await fetch("/user", requestOptions)
                     .then(res => res.json())
                     .then(data => setUser(data.name));
-                if (response.status === 401) {
-                    localStorage.removeItem('user');
-                }
             } catch (error) {
 
                 console.log(error)
@@ -47,17 +44,6 @@ function Header() {
             }
         }
         if (localStorage.getItem('user')) fetchData()
-
-
-        // fetch("/user", requestOptions)
-        //     .then(function(response) {
-        //         if (response.status === 401) {
-        //             // do what you need to do here
-        //         }
-        //     })
-        //     .catch(function(error) {
-        //         console.log('DO WHAT YOU WANT')
-        //     });
     })
 
     async function logout() {

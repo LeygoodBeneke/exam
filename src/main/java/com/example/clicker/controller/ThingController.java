@@ -1,6 +1,7 @@
 package com.example.clicker.controller;
 
 import com.example.clicker.dto.thing.CreateThingDto;
+import com.example.clicker.dto.thing.GiveThingDto;
 import com.example.clicker.dto.thing.ThingDto;
 import com.example.clicker.dto.thing.UpdateThingDto;
 import com.example.clicker.service.ThingService;
@@ -37,6 +38,11 @@ public class ThingController {
     @DeleteMapping("/{id}")
     private ResponseEntity<ThingDto> deleteThing(@PathVariable UUID id) {
         return new ResponseEntity<>(thingService.deleteThing(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/give")
+    private ResponseEntity<ThingDto> giveThink(@RequestBody GiveThingDto giveThingDto) {
+        return new ResponseEntity<>(thingService.giveThing(giveThingDto), HttpStatus.CREATED);
     }
 
 }

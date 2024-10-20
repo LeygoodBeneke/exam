@@ -1,6 +1,7 @@
 package com.example.clicker.service;
 
 import com.example.clicker.dto.thing.CreateThingDto;
+import com.example.clicker.dto.thing.GiveThingDto;
 import com.example.clicker.dto.thing.ThingDto;
 import com.example.clicker.dto.thing.UpdateThingDto;
 import com.example.clicker.entity.ThingEntity;
@@ -65,6 +66,10 @@ public class ThingService {
         var user = getUserAuthEntity();
         var thing = thingRepository.findByUserAndId(user, id)
                 .orElseThrow(() -> new RuntimeException("Вещь не найдена"));
+
+        var useEntity = useRepository.findByThing(thing).orElseThrow();
+        useRepository.delete(useEntity);
+
         thingRepository.delete(thing);
         return thingMapper.toDto(thing);
     }
@@ -96,5 +101,20 @@ public class ThingService {
                 .orElseThrow(() -> new RuntimeException("Неверное место хранениния вещи")));
 
         useRepository.save(useEntity);
+    }
+
+    public ThingDto giveThing(GiveThingDto giveThingDto) {
+        var think = thingRepository.findById(UUID.fromString(giveThingDto.getThinkId()))
+                .orElseThrow();
+
+        var useEntity = useRepository.findByThing(think).orElseThrow();
+
+        var user = userRepository.findByUsername(giveThingDto.getUsername())
+                .orElseThrow();
+
+        useEntity.setUser(user);
+
+        useRepository.save(useEntity);
+        return new ThingDto();
     }
 }

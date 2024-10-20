@@ -43,7 +43,6 @@ public class UserController {
     @GetMapping("/list")
     private ResponseEntity<List<UserDto>> getUserList() {
         var userEntityList = userRepository.findAll();
-        System.err.println(userEntityList);
         return new ResponseEntity<>(userEntityList.stream().map(userMapper::toDto).collect(Collectors.toList()), HttpStatus.OK);
     }
 

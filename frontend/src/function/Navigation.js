@@ -7,6 +7,7 @@ import TableRow from "./TableRow";
 import ThingDelete from "./Thing/ThingDelete";
 import item from "../Components/Item";
 import ThingCreate from "./Thing/ThingCreate";
+import '../style/Table.css'
 
 function Navigation() {
     let navigate = useNavigate();
@@ -112,36 +113,25 @@ function Navigation() {
 
             <div className="screen-1">
                 <h1>Передать товар</h1>
-                <table>
-                    <thead>
-                    <tr key={1231}>
-                        <th>Название товара</th>
-                        <th>Имя пользователя</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr key={1233}>
-                        <td>
-                            <select onChange={handleSelectedItemId}>
-                                <option>Выберите название товара</option>
-                                {
-                                    items.map((item) => {
-                                        return <option key={item.id} value={item.id}>{item.name}</option>
-                                    })
-                                }
-                            </select>
-                        </td>
-                        <td>
-                            <UserSelect onSelect={setSelectedUser}/>
-                        </td>
 
-                        <td>
-                            <button  className="login" onClick={deleteItem}>передать</button>
-                        </td>
-                    </tr>
+                <div className="email">
+                    <label>Название товара</label>
+                    <select onChange={handleSelectedItemId}>
+                        <option>Выберите название товара</option>
+                        {
+                            items.map((item) => {
+                                return <option key={item.id} value={item.id}>{item.name}</option>
+                            })
+                        }
+                    </select>
+                </div>
 
-                    </tbody>
-                </table>
+                <div className="email">
+                    <label>Имя пользователя</label>
+                    <UserSelect onSelect={setSelectedUser}/>
+                </div>
+                <button  className="login" onClick={deleteItem}>передать</button>
+
             </div>
 
 
@@ -150,32 +140,46 @@ function Navigation() {
 
             <div className="screen-1">
                 <h1>Изменить товар</h1>
-                <div>Выберете товар для изменения</div>
-                <select>
-                    <option>Выберите название товара</option>
-                    {
-                        items.map((item) => {
-                            return <option key={item.id} value={item.id}>{item.name}</option>
-                        })
-                    }
-                </select>
 
-                <div>новое название</div>
-                <input/>
-                <div>новое описание</div>
-                <input/>
-                <div>новая гарантия</div>
-                <input type="date"/>
-                <div>новое место харанения</div>
-                <select>
-                    <option>Выберите название места хранения</option>
-                    {
-                        places.map((place) => {
-                            return <option key={place.id} value={place.id}>{place.description}</option>
-                        })
-                    }
-                </select>
-                <p/>
+
+                <div className="email">
+                    <label>Выберете товар для изменения</label>
+                    <select>
+                        <option>Выберите название товара</option>
+                        {
+                            items.map((item) => {
+                                return <option key={item.id} value={item.id}>{item.name}</option>
+                            })
+                        }
+                    </select>
+                </div>
+
+                <div className="email">
+                    <label>новое название</label>
+                    <input/>
+                </div>
+
+                <div className="email">
+                    <label>новое описание</label>
+                    <input/>
+                </div>
+
+                <div className="email">
+                    <label>новая гарантия</label>
+                    <input type="date"/>
+                </div>
+
+                <div className="email">
+                    <label>новое место харанения</label>
+                    <select>
+                        <option>Выберите название места хранения</option>
+                        {
+                            places.map((place) => {
+                                return <option key={place.id} value={place.id}>{place.description}</option>
+                            })
+                        }
+                    </select>
+                </div>
                 <button className="login" onClick={() => alert("Товар успешно изменён!")}>Изменить</button>
             </div>
 

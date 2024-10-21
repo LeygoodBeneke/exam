@@ -47,22 +47,34 @@ function ThingCreate({places}) {
     return (
         <div className="screen-1">
             <h1>Создать товар</h1>
-            <div>название</div>
-            <input value={name} onChange={updateName}/>
-            <div>описание</div>
-            <input value={description} onChange={updateDescription}/>
-            <div>гарантия</div>
-            <input type="datetime-local" onChange={updateWarranty}/>
-            <div>место харанения</div>
-            <select onChange={updatePlaceId}>
-                <option>Выберите название места хранения</option>
-                {
-                    places.map((place) => {
-                        return <option key={place.id} value={place.id}>{place.description}</option>
-                    })
-                }
-            </select>
-            <p/>
+            <div className="email">
+                <label>название</label>
+                <input value={name} onChange={updateName}/>
+            </div>
+
+            <div className="email">
+                <label>описание</label>
+                <input value={description} onChange={updateDescription}/>
+            </div>
+
+            <div className="email">
+                <label>гарантия</label>
+                <input type="datetime-local" onChange={updateWarranty}/>
+            </div>
+
+            <div className="email">
+                <label>место харанения</label>
+                <select onChange={updatePlaceId}>
+                    <option>Выберите название места хранения</option>
+                    {
+                        places.map((place) => {
+                            return <option key={place.id} value={place.id}>{place.description}</option>
+                        })
+                    }
+                </select>
+            </div>
+
+
             <button className="login" onClick={createItem}>Создать</button>
         </div>
     );

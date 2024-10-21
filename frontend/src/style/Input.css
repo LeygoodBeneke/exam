@@ -1,0 +1,10 @@
+input {
+    padding: 1em;
+    background: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 300;
+    transition: 0.3s;
+    word-wrap: break-word;
+    word-break: break-all;
+}

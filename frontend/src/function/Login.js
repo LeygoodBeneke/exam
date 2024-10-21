@@ -1,6 +1,8 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import '../style/login.css';
+import '../style/Input.css';
+import '../style/Select.css';
 
 function Login() {
     const [login, setLogin] = useState('');
@@ -33,7 +35,7 @@ function Login() {
             localStorage.setItem("password", password);
             navigate('/nav');
         } else {
-            document.querySelector('.test').style.visibility = 'visible';
+            alert("неправильное имя пользователя или пароль!")
         }
     }
 
@@ -43,7 +45,7 @@ function Login() {
             <div className="email">
                 <label>Login</label>
                 <div className="sec-2">
-                    <input placeholder="Username@gmail.com"
+                    <input placeholder="Username"
                            value={login}
                            onChange={e => updateLogin(e.target.value)}/>
                 </div>

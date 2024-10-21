@@ -28,16 +28,17 @@ function ThingDelete({items}) {
         <div className="screen-1">
             <h1>Удалить товар</h1>
 
-            <div>Товар</div>
-            <select onChange={handleSelectedDeleteItemId}>
-                <option>Выберите название товара</option>
-                {
-                    items.map((item) => {
-                        return <option key={item.id} value={item.id}>{item.name}</option>
-                    })
-                }
-            </select>
-            <p/>
+            <div className="email">
+                <label>Товар</label>
+                <select onChange={handleSelectedDeleteItemId}>
+                    <option>Выберите название товара</option>
+                    {
+                        items.map((item) => {
+                            return <option key={item.id} value={item.id}>{item.name}</option>
+                        })
+                    }
+                </select>
+            </div>
             <button className="login" onClick={deleteItem}>Удалить</button>
         </div>
     );

@@ -10,7 +10,8 @@ function TableRow({item, counter}) {
             <td>{counter}</td>
             <td>{item.name}</td>
             <td>{item.description}</td>
-            <td>{item.warranty}</td>
+
+            <td type="date">{new Date(item.warranty).toLocaleDateString()}</td>
             {/*<td>*/}
             {/*    <UserSelect onSelect={setUser}/>*/}
 

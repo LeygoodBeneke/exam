@@ -79,11 +79,13 @@ class Places extends Component{
         return (
             <div>
                 <Header />
-                <div className="Places">
+
+                <div className="screen-1">
+                    <h1>Склады</h1>
                     {
-                            this.state.items.map((it) => {
-                                return <Place key={it.id} place={it} onAdd={this.props.onAdd} />
-                            })
+                        this.state.items.map((it) => {
+                            return <Place key={it.id} place={it} onAdd={this.props.onAdd} />
+                        })
                     }
                 </div>
             </div>

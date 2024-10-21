@@ -16,6 +16,8 @@ function Navigation() {
     const [selectedUser, setSelectedUser] = useState();
     const [selectedItem, setSelectedItemId] = useState();
     const [places, setPlaces] = useState([]);
+    const [changedItem, setChangedItem] = useState({})
+
     let counter = 0;
     useEffect(() => {
         if (!isAuth) {
@@ -51,9 +53,6 @@ function Navigation() {
         if (isAuth) routeChange();
     }, [isAuth, routeChange]);
 
-    function handleClick() {
-        alert('Товар успешно передан пользователю!');
-    }
     const handleSelectedItemId = (event) => {
         if (event.target.value !== 'Выберете пользователя')
             setSelectedItemId(event.target.value);
@@ -80,6 +79,49 @@ function Navigation() {
             body: JSON.stringify(dto)
         });
         console.log(selectedItem, selectedUser);
+    };
+
+    const changeItem = () => {
+
+
+        console.log(selectedItem, selectedUser);
+    };
+
+    const updateName = (value) => {
+        changedItem.name = value
+    }
+
+    const updateDescription = (value) => {
+        changedItem.description = value
+    }
+
+    const updateWarranty = (event) => {
+        changedItem.warranty = event.target.value
+    }
+
+    const updatePlaceId = (event) => {
+        changedItem.placeId = event.target.value
+    }
+
+    const updateItem = () => {
+        console.log(changedItem)
+
+        fetch("/thing", {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem('user')
+            },
+            body: JSON.stringify(changedItem)
+        });
+        alert("Товар успешно изменён!")
+    }
+
+    const handleChangedItemId = (event) => {
+        if (event.target.value !== 'Выберете название товара')
+            changedItem.id = event.target.value;
+        else
+            setSelectedItemId('');
     };
 
 
@@ -144,7 +186,7 @@ function Navigation() {
 
                 <div className="email">
                     <label>Выберете товар для изменения</label>
-                    <select>
+                    <select onChange={handleChangedItemId}>
                         <option>Выберите название товара</option>
                         {
                             items.map((item) => {
@@ -156,22 +198,24 @@ function Navigation() {
 
                 <div className="email">
                     <label>новое название</label>
-                    <input/>
+                    <input value={changedItem.name}
+                           onChange={e => updateName(e.target.value)}/>
                 </div>
 
                 <div className="email">
                     <label>новое описание</label>
-                    <input/>
+                    <input value={changedItem.description}
+                           onChange={e => updateDescription(e.target.value)}/>
                 </div>
 
                 <div className="email">
                     <label>новая гарантия</label>
-                    <input type="date"/>
+                    <input type="date"  onChange={updateWarranty}/>
                 </div>
 
                 <div className="email">
                     <label>новое место харанения</label>
-                    <select>
+                    <select onChange={updatePlaceId}>
                         <option>Выберите название места хранения</option>
                         {
                             places.map((place) => {
@@ -180,7 +224,7 @@ function Navigation() {
                         }
                     </select>
                 </div>
-                <button className="login" onClick={() => alert("Товар успешно изменён!")}>Изменить</button>
+                <button className="login" onClick={updateItem}>Изменить</button>
             </div>
 
 

@@ -59,7 +59,7 @@ function ThingCreate({places}) {
 
             <div className="email">
                 <label>гарантия</label>
-                <input type="datetime-local" onChange={updateWarranty}/>
+                <input type="date" onChange={updateWarranty}/>
             </div>
 
             <div className="email">

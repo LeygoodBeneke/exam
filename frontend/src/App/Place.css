@@ -1,12 +1,12 @@
 .Place {
-    background: rgb(178, 183, 192);
+    background: rgb(255, 255, 255);
     transition: .2s;
     min-width: 150px;
-    max-width: 350px;
-    width: 100%;
     box-shadow: 0 0 5px 5px rgba(238, 238, 238, 0.2);
     height: 130px;
     align-content: center;
+    border-radius: 30px;
+    padding: 16px;
 }
 
 .Place:hover {

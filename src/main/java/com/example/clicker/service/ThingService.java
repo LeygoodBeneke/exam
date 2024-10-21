@@ -40,6 +40,7 @@ public class ThingService {
 
     public ThingDto updateThing(UpdateThingDto updateThingDto) {
 
+        System.err.println("ping");
         var user = getUserAuthEntity();
 
         ThingEntity thing = thingMapper.toEntity(updateThingDto);

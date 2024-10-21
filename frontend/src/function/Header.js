@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
+import '../style/Header.css';
 import * as alertActions from "react-dom/test-utils";
 
 function Header() {
@@ -52,12 +53,12 @@ function Header() {
     }
 
     return (
-        <div className="Header">
-            <a href="/nav">Мои товары</a>
-            <a href="/test">Склады</a>
-            <div>USERNAME: {user}</div>
-            <button onClick={logout}>Выйти</button>
-        </div>
+        <header className="screen-2">
+            <a className="email" href="/nav">Мои товары</a>
+            <a className="email" href="/test">Склады</a>
+            <div className="email" >USERNAME: {user}</div>
+            <button className="logout" onClick={logout}>Выйти</button>
+        </header>
     );
 }
 export default Header;

@@ -45,7 +45,7 @@ function ThingCreate({places}) {
     };
 
     return (
-        <div>
+        <div className="screen-1">
             <h1>Создать товар</h1>
             <div>название</div>
             <input value={name} onChange={updateName}/>
@@ -63,7 +63,7 @@ function ThingCreate({places}) {
                 }
             </select>
             <p/>
-            <button onClick={createItem}>Создать</button>
+            <button className="login" onClick={createItem}>Создать</button>
         </div>
     );
 }

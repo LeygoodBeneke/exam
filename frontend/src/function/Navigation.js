@@ -85,37 +85,41 @@ function Navigation() {
     return (
         <div>
             <Header/>
-            <h1>Мои товары</h1>
-            <table>
-                <thead>
-                <tr key={1231}>
-                    <th></th>
-                    <th>Название товара</th>
-                    <th>Описание</th>
-                    <th>Срок годности</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    items.map((item) => {
-                    counter++;
-                    // <TableRow item={item} counter={counter} />
-                    return (<TableRow key={counter} item={item} counter={counter}/>
-                    )})
-                }
+            <div className="screen-1">
+                <h1>Мои товары</h1>
+                <table>
+                    <thead>
+                    <tr key={1231}>
+                        <th></th>
+                        <th>Название товара</th>
+                        <th>Описание</th>
+                        <th>Срок годности</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        items.map((item) => {
+                            counter++;
+                            // <TableRow item={item} counter={counter} />
+                            return (<TableRow key={counter} item={item} counter={counter}/>
+                            )})
+                    }
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
 
-            <h1>Передать товар</h1>
-            <table>
-                <thead>
-                <tr key={1231}>
-                    <th>Название товара</th>
-                    <th>Имя пользователя</th>
-                </tr>
-                </thead>
-                <tbody>
+
+            <div className="screen-1">
+                <h1>Передать товар</h1>
+                <table>
+                    <thead>
+                    <tr key={1231}>
+                        <th>Название товара</th>
+                        <th>Имя пользователя</th>
+                    </tr>
+                    </thead>
+                    <tbody>
                     <tr key={1233}>
                         <td>
                             <select onChange={handleSelectedItemId}>
@@ -132,49 +136,49 @@ function Navigation() {
                         </td>
 
                         <td>
-                            <button onClick={deleteItem}>передать</button>
+                            <button  className="login" onClick={deleteItem}>передать</button>
                         </td>
                     </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
 
-            <hr/>
+
 
             <ThingCreate places={places}/>
 
-            <hr/>
+            <div className="screen-1">
+                <h1>Изменить товар</h1>
+                <div>Выберете товар для изменения</div>
+                <select>
+                    <option>Выберите название товара</option>
+                    {
+                        items.map((item) => {
+                            return <option key={item.id} value={item.id}>{item.name}</option>
+                        })
+                    }
+                </select>
 
-            <h1>Изменить товар</h1>
-            <div>Выберете товар для изменения</div>
-            <select>
-                <option>Выберите название товара</option>
-                {
-                    items.map((item) => {
-                        return <option key={item.id} value={item.id}>{item.name}</option>
-                    })
-                }
-            </select>
+                <div>новое название</div>
+                <input/>
+                <div>новое описание</div>
+                <input/>
+                <div>новая гарантия</div>
+                <input type="date"/>
+                <div>новое место харанения</div>
+                <select>
+                    <option>Выберите название места хранения</option>
+                    {
+                        places.map((place) => {
+                            return <option key={place.id} value={place.id}>{place.description}</option>
+                        })
+                    }
+                </select>
+                <p/>
+                <button className="login" onClick={() => alert("Товар успешно изменён!")}>Изменить</button>
+            </div>
 
-            <div>новое название</div>
-            <input/>
-            <div>новое описание</div>
-            <input/>
-            <div>новая гарантия</div>
-            <input type="date"/>
-            <div>новое место харанения</div>
-            <select>
-                <option>Выберите название места хранения</option>
-                {
-                    places.map((place) => {
-                        return <option key={place.id} value={place.id}>{place.description}</option>
-                    })
-                }
-            </select>
-            <p/>
-            <button onClick={() => alert("Товар успешно изменён!")}>Изменить</button>
-
-            <hr/>
 
             <ThingDelete items={items}/>
         </div>

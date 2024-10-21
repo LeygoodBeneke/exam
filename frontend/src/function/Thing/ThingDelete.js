@@ -25,7 +25,7 @@ function ThingDelete({items}) {
     };
 
     return (
-        <div>
+        <div className="screen-1">
             <h1>Удалить товар</h1>
 
             <div>Товар</div>
@@ -38,7 +38,7 @@ function ThingDelete({items}) {
                 }
             </select>
             <p/>
-            <button onClick={deleteItem}>Удалить</button>
+            <button className="login" onClick={deleteItem}>Удалить</button>
         </div>
     );
 }

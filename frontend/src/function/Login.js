@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import '../style/login.css';
 
 function Login() {
     const [login, setLogin] = useState('');
@@ -37,14 +38,26 @@ function Login() {
     }
 
     return (
-        <div>
-            <p>login</p>
-            <input value={login} onChange={e => updateLogin(e.target.value)}/>
-            <p>password</p>
-            <input value={password} onChange={e => updatePassword(e.target.value)}/>
-            <p className="test" style={{visibility: "hidden"}}>Неверные учетные данные пользователя</p>
-            <button onClick={loginFunction}>Авторизация</button>
-            <button>Регистрация</button>
+        <div className="screen-1">
+
+            <div className="email">
+                <label>Login</label>
+                <div className="sec-2">
+                    <input placeholder="Username@gmail.com"
+                           value={login}
+                           onChange={e => updateLogin(e.target.value)}/>
+                </div>
+            </div>
+
+            <div className="password">
+                <label>Password</label>
+                <input className="pass" type="password" placeholder="············"
+                       value={password}
+                       onChange={e => updatePassword(e.target.value)}/>
+            </div>
+            {/*<p className="test" style={{visibility: "hidden"}}>Неверные учетные данные пользователя</p>*/}
+            <button className="login" onClick={loginFunction}>Авторизация</button>
+            <button className="login">Регистрация</button>
         </div>
     );
 }

@@ -8,10 +8,13 @@ import ThingDelete from "./Thing/ThingDelete";
 import item from "../Components/Item";
 import ThingCreate from "./Thing/ThingCreate";
 import '../style/Table.css'
+import ThingInfo from "./Thing/ThingInfo";
 
 function Navigation() {
     let navigate = useNavigate();
     let isAuth = localStorage.getItem("user") === null;
+    let thingInfo = document.getElementById("thing");
+    const [thingInfoItem, setThingInfoItem] = useState({})
     const [items, setItems] = useState([]);
     const [selectedUser, setSelectedUser] = useState();
     const [selectedItem, setSelectedItemId] = useState();
@@ -124,34 +127,35 @@ function Navigation() {
             setSelectedItemId('');
     };
 
+    const showThingInfo = (item) => {
+        console.log(item)
+        setThingInfoItem(item)
+        thingInfo.style.display = "block"
+    }
+
+    window.onclick = function(event) {
+        if (event.target === thingInfo) {
+            thingInfo.style.display = "none";
+        }
+    }
+
 
     return (
         <div>
             <Header/>
+
+            <ThingInfo item={thingInfoItem}/>
+
             <div className="screen-1">
                 <h1>Мои товары</h1>
-                <table>
-                    <thead>
-                    <tr key={1231}>
-                        <th></th>
-                        <th>Название товара</th>
-                        <th>Описание</th>
-                        <th>Срок годности</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <div className="things">
                     {
                         items.map((item) => {
-                            counter++;
-                            // <TableRow item={item} counter={counter} />
-                            return (<TableRow key={counter} item={item} counter={counter}/>
+                            return (<div className="thing" onClick={() => showThingInfo(item)}>{item.name}</div>
                             )})
                     }
-
-                    </tbody>
-                </table>
+                </div>
             </div>
-
 
             <div className="screen-1">
                 <h1>Передать товар</h1>

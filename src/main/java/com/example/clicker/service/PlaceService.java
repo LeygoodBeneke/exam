@@ -3,8 +3,12 @@ package com.example.clicker.service;
 import com.example.clicker.dto.place.CreatePlaceDto;
 import com.example.clicker.dto.place.PlaceDto;
 import com.example.clicker.dto.place.UpdatePlaceDto;
+import com.example.clicker.dto.thing.ThingDto;
+import com.example.clicker.entity.UseEntity;
 import com.example.clicker.mapper.PlaceMapper;
+import com.example.clicker.mapper.ThingMapper;
 import com.example.clicker.repository.PlaceRepository;
+import com.example.clicker.repository.UseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +20,10 @@ import java.util.UUID;
 public class PlaceService {
 
     private final PlaceRepository placeRepository;
+    private final UseRepository useRepository;
     private final PlaceMapper placeMapper;
+    private final ThingMapper thingMapper;
+
 
     public PlaceDto createPlace(CreatePlaceDto createPlaceDto) {
         var placeEntity = placeMapper.toEntity(createPlaceDto);
@@ -31,9 +38,13 @@ public class PlaceService {
     }
 
     public PlaceDto updatePlace(UpdatePlaceDto updatePlaceDto) {
-        if (placeRepository.findById(updatePlaceDto.getId()).isEmpty())
-            throw new RuntimeException("Такого места не существует");
+
+        var oldPlace = placeRepository.findById(updatePlaceDto.getId())
+                .orElseThrow(() -> new RuntimeException("Такого места не существует"));
+
         var updatedEntity = placeMapper.toEntity(updatePlaceDto);
+        updatedEntity.setId(oldPlace.getId());
+
         placeRepository.save(updatedEntity);
         return placeMapper.toDto(updatedEntity);
     }
@@ -44,5 +55,13 @@ public class PlaceService {
 
         placeRepository.delete(entity);
         return placeMapper.toDto(entity);
+    }
+
+    public List<ThingDto> getPlaceThings(UUID placeId) {
+        var place = placeRepository.findById(placeId).orElseThrow();
+
+        var use = useRepository.findAllByPlaceEntity(place);
+
+        return use.stream().map(UseEntity::getThing).map(thingMapper::toDto).toList();
     }
 }

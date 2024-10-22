@@ -1,6 +1,7 @@
 package com.example.clicker.controller;
 
 import com.example.clicker.dto.AuthResponseDto;
+import com.example.clicker.dto.ErrorMessageDto;
 import com.example.clicker.dto.LoginDto;
 import com.example.clicker.dto.RegisterDto;
 import com.example.clicker.entity.Role;
@@ -54,9 +55,14 @@ public class AuthController {
     }
 
     @PostMapping("register")
-    public ResponseEntity<String> registerUser(@RequestBody RegisterDto registerDTO) {
+    public ResponseEntity<ErrorMessageDto> registerUser(@RequestBody RegisterDto registerDTO) {
+
+        ErrorMessageDto errorMessageDto = new ErrorMessageDto();
+        errorMessageDto.setMessage("User registered successfully");
+
         if (userRepository.existsByUsername(registerDTO.getUsername())) {
-            return new ResponseEntity<String>("Username is taken", HttpStatus.BAD_REQUEST);
+            errorMessageDto.setMessage("Username is taken");
+            return new ResponseEntity<>(errorMessageDto, HttpStatus.OK);
         }
         UserEntity user = new UserEntity();
         user.setUsername(registerDTO.getUsername());
@@ -64,6 +70,6 @@ public class AuthController {
         Role roles = roleRepository.findByName("USER").orElse(null);
         user.setRoles(Collections.singletonList(roles));
         userRepository.save(user);
-        return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+        return new ResponseEntity<>(errorMessageDto, HttpStatus.OK);
     }
 }

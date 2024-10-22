@@ -38,4 +38,9 @@ public class PlaceController {
     private ResponseEntity<PlaceDto> deleteThing(@PathVariable UUID id) {
         return new ResponseEntity<>(placeService.deletePlace(id), HttpStatus.OK);
     }
+
+    @GetMapping("/{placeId}")
+    public ResponseEntity<List<ThingDto>> getPlaceThings(@PathVariable UUID placeId) {
+        return new ResponseEntity<>(placeService.getPlaceThings(placeId), HttpStatus.OK);
+    }
 }

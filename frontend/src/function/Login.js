@@ -39,6 +39,22 @@ function Login() {
         }
     }
 
+    async function registerFunction() {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: login, password: password })
+        };
+        const response = await fetch("/api/auth/register", requestOptions)
+        data = await response.json();
+
+        if (data.message !== "User registered successfully") {
+            alert("пользователь с таким именем уже существует!")
+        } else {
+            alert("пользователь создан успешно!")
+        }
+    }
+
     return (
         <div className="screen-1">
 
@@ -59,7 +75,7 @@ function Login() {
             </div>
             {/*<p className="test" style={{visibility: "hidden"}}>Неверные учетные данные пользователя</p>*/}
             <button className="login" onClick={loginFunction}>Авторизация</button>
-            <button className="login">Регистрация</button>
+            <button className="login" onClick={registerFunction}>Регистрация</button>
         </div>
     );
 }

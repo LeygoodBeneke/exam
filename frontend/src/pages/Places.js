@@ -1,8 +1,12 @@
 import {Component} from "react";
 
 // import Item from "../Components/Item";
-import Place from "../Components/Place";
+import Place from "../function/Place/Place";
 import Header from "../function/Header";
+import ThingInfo from "../function/Thing/ThingInfo";
+import PlaceCreate from "../function/Place/PlaceCreate";
+import PlaceUpdate from "../function/Place/PlaceUpdate";
+import PlaceDelete from "../function/Place/PlaceDelete";
 // import items from "./items";
 // import Login from "../Components/Login";
 // import {Navigate} from "react-router-dom";
@@ -80,14 +84,19 @@ class Places extends Component{
             <div>
                 <Header />
 
-                <div className="screen-1">
-                    <h1>Склады</h1>
-                    {
-                        this.state.items.map((it) => {
-                            return <Place key={it.id} place={it} onAdd={this.props.onAdd} />
-                        })
-                    }
-                </div>
+                <ThingInfo item={"we"}/>
+
+
+                <h1>Склады</h1>
+                {
+                    this.state.items.map((it) => {
+                        return <Place key={it.id} place={it} onAdd={this.props.onAdd} />
+                    })
+                }
+
+                <PlaceCreate />
+                <PlaceUpdate places={this.state.items}/>
+                <PlaceDelete places={this.state.items}/>
             </div>
         );
     }

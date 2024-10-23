@@ -6,27 +6,23 @@ function UserSelect({onSelect}) {
 
     useEffect(() => {
         if (localStorage.getItem('user') !== null) {
-            fetchData()
+            try {
+                fetch("/user/list", {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': localStorage.getItem('user')
+                    }
+                })
+                    .then(data => data.json())
+                    .then(data => setUserList(data))
+                    .then(() => onSelect(userList.at(0)));
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
             onSelect(userList.at(0))
         }
-    }, []);
-
-    async function fetchData() {
-        try {
-            const response = await fetch("/user/list", {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': localStorage.getItem('user')
-                }
-            });
-            const data = await response.json();
-            setUserList(data);
-            onSelect(userList.at(0))
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    }
+    }, [onSelect, userList]);
 
     const handleChange = (event) => {
         if (event.target.value !== 'Выберете пользователя')

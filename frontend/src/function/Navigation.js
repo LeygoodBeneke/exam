@@ -11,14 +11,13 @@ function Navigation() {
     let navigate = useNavigate();
     let isAuth = localStorage.getItem("user") === null;
     let thingInfo = document.getElementById("thing");
+    let changedItem = {};
     const [thingInfoItem, setThingInfoItem] = useState({})
     const [items, setItems] = useState([]);
     const [selectedUser, setSelectedUser] = useState();
     const [selectedItem, setSelectedItemId] = useState();
     const [places, setPlaces] = useState([]);
-    const [changedItem, setChangedItem] = useState({})
 
-    let counter = 0;
     useEffect(() => {
         if (!isAuth) {
             fetch("/thing", {
@@ -142,7 +141,7 @@ function Navigation() {
                 <div className="things">
                     {
                         items.map((item) => {
-                            return (<div className="thing" onClick={() => showThingInfo(item)}>{item.name}</div>
+                            return (<div key={item.id} className="thing" onClick={() => showThingInfo(item)}>{item.name}</div>
                             )})
                     }
                 </div>

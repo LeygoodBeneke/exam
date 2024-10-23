@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
 import '../style/Header.css';
-import * as alertActions from "react-dom/test-utils";
 
 function Header() {
     let navigate = useNavigate();
@@ -17,15 +16,13 @@ function Header() {
             },
         };
 
-        const fetchData = async () => {
+        const fetchData = () => {
             try {
-                await fetch("/user", requestOptions)
+                fetch("/user", requestOptions)
                     .then(res => res.json())
                     .then(data => setUser(data.name));
             } catch (error) {
-
                 console.log(error)
-                return;
             }
         }
         if (localStorage.getItem('user')) fetchData()

@@ -44,7 +44,7 @@ function Place({place}) {
         <div className="things">
             {
                 items.map((item) => {
-                    return (<div className="thing">{item.name}</div>);
+                    return (<div className="thing" key={item.id}>{item.name}</div>);
                 })
             }
         </div>

@@ -1,4 +1,3 @@
-import {useEffect, useState} from "react";
 import "../../style/ThingInfo.css"
 
 function ThingInfo({item}) {

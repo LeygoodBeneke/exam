@@ -12,7 +12,7 @@
 	<artifactId>themarket</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>the market</name>
-	<description>The Market project for Spring Boot</description>
+	<description>Project for Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>

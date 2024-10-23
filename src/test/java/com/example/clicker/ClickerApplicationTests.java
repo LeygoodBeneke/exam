@@ -1,9 +1,6 @@
 package com.example.clicker;
 
-import com.example.clicker.Model.Item;
 import com.example.clicker.entity.UserEntity;
-import com.example.clicker.repository.ItemRepository;
-import com.example.clicker.repository.OrdersRepository;
 import com.example.clicker.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,10 +15,6 @@ import org.springframework.util.Assert;
 class ClickerApplicationTests {
 	@Autowired
     UserRepository userRepository;
-	@Autowired
-	OrdersRepository ordersRepository;
-	@Autowired
-	ItemRepository itemRepository;
 
 	@BeforeEach
 	public void setData() {
@@ -32,10 +25,6 @@ class ClickerApplicationTests {
 		userRepository.save(UserEntity.builder()
 				.username("Admin")
 				.password("Admin")
-				.build());
-		itemRepository.save(Item.builder()
-				.name("First test item")
-				.description("First test item description")
 				.build());
 	}
 

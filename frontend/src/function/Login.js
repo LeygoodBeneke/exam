@@ -33,7 +33,7 @@ function Login() {
             localStorage.setItem("user", data.tokenType + data.token);
             localStorage.setItem("username", login);
             localStorage.setItem("password", password);
-            navigate('/nav');
+            navigate('/');
         } else {
             alert("неправильное имя пользователя или пароль!")
         }

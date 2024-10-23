@@ -2,10 +2,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import UserSelect from "./UserSelect";
-import PushButton from "./PushButton";
-import TableRow from "./TableRow";
 import ThingDelete from "./Thing/ThingDelete";
-import item from "../Components/Item";
 import ThingCreate from "./Thing/ThingCreate";
 import '../style/Table.css'
 import ThingInfo from "./Thing/ThingInfo";
@@ -81,12 +78,6 @@ function Navigation() {
             },
             body: JSON.stringify(dto)
         });
-        console.log(selectedItem, selectedUser);
-    };
-
-    const changeItem = () => {
-
-
         console.log(selectedItem, selectedUser);
     };
 

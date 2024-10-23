@@ -1,28 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App/App';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Items from "./pages/items";
-import Places from "./pages/Places";
+import Places from "./function/Place/Places";
 import Navigation from "./function/Navigation"
 import Login from "./function/Login";
 
 const router = createBrowserRouter([
     {
-        path: "/items",
-        element: <Items />,
-    },
-    {
-        path: "/",
-        element: <App />,
-    },
-    {
-        path: "/test",
+        path: "/places",
         element: <Places />,
     },
 
     {
-        path: "/nav",
+        path: "/",
         element: <Navigation />,
     },
     {

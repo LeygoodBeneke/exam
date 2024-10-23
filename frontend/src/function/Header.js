@@ -9,17 +9,6 @@ function Header() {
 
 
     useEffect( () => {
-        // if (localStorage.getItem('user') !== null)
-        // fetch("/user", {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Authorization': localStorage.getItem('user')
-        //     },
-        // })
-        //     .then(res => res.json())
-        //     .then(data => setUsername(data));
-
         const requestOptions = {
             method: 'GET',
             headers: {
@@ -27,11 +16,6 @@ function Header() {
                 'Authorization': localStorage.getItem('user')
             },
         };
-        //let response = new Response();
-        //if (localStorage.getItem('user') !== null)
-        // fetch("/user", requestOptions)
-        //     .then(handleResponse)
-        //     .catch(function(error) {});
 
         const fetchData = async () => {
             try {
@@ -54,9 +38,9 @@ function Header() {
 
     return (
         <header className="screen-2">
-            <a className="email" href="/nav">Мои товары</a>
-            <a className="email" href="/test">Склады</a>
-            <div className="email" >USERNAME: {user}</div>
+            <a className="email" href="/">Мои товары</a>
+            <a className="email" href="/places">Склады</a>
+            <div className="email" >Login: {user}</div>
             <button className="logout" onClick={logout}>Выйти</button>
         </header>
     );

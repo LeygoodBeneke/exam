@@ -21,15 +21,12 @@ public class JWTGenerator {
         Date currentDate = new Date();
         Date expireDate = new Date(currentDate.getTime() + SecurityConstants.JWT_EXPIRATION_TIME);
 
-        String token = Jwts.builder()
+        return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt( new Date())
                 .setExpiration(expireDate)
                 .signWith(key,SignatureAlgorithm.HS512)
                 .compact();
-        System.out.println("New token :");
-        System.out.println(token);
-        return token;
     }
 
     public String getUsernameFromToken(String token) {
@@ -50,7 +47,6 @@ public class JWTGenerator {
             return true;
         } catch (Exception ex) {
             return false;
-//            throw new AuthenticationCredentialsNotFoundException("JWT was exprired or incorrect",ex.fillInStackTrace());
         }
     }
 }

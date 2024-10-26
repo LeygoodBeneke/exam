@@ -14,7 +14,7 @@ function Navigation() {
     let changedItem = {};
     const [thingInfoItem, setThingInfoItem] = useState({})
     const [items, setItems] = useState([]);
-    const [selectedUser, setSelectedUser] = useState();
+    const [selectedUser, setSelectedUser] = useState("");
     const [selectedItem, setSelectedItemId] = useState();
     const [places, setPlaces] = useState([]);
 
@@ -77,7 +77,7 @@ function Navigation() {
             },
             body: JSON.stringify(dto)
         });
-        console.log(selectedItem, selectedUser);
+        console.log(dto);
     };
 
     const updateName = (value) => {
@@ -99,7 +99,7 @@ function Navigation() {
     const updateItem = () => {
         console.log(changedItem)
 
-        fetch("/thing", {
+        const response = fetch("/thing", {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ function Navigation() {
             },
             body: JSON.stringify(changedItem)
         });
-        alert("Товар успешно изменён!")
+        alert("Товар успешно изменён! \n" + response.then(response => response.status))
     }
 
     const handleChangedItemId = (event) => {

@@ -16,11 +16,9 @@ function UserSelect({onSelect}) {
                 })
                     .then(data => data.json())
                     .then(data => setUserList(data))
-                    .then(() => onSelect(userList.at(0)));
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
-            onSelect(userList.at(0))
         }
     }, [onSelect, userList]);
 

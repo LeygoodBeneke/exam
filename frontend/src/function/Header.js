@@ -26,7 +26,7 @@ function Header() {
             }
         }
         if (localStorage.getItem('user')) fetchData()
-    })
+    }, [])
 
     async function logout() {
         localStorage.removeItem("user");
